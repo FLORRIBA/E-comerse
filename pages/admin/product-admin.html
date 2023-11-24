@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Script para cuidar y redireccionar  -->
+    <script src="/js/adminGuard.js"></script>
+
+    <title>Product-admin</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+
+<body>
+
+
+    <header class="main-header">
+
+        <input class="input-check" type="checkbox" name="" id="check-menu">
+        <label class="label-menu" for="check-menu">
+            <div class="burger-line">
+                <img class="nav-logo" src="../../assets/images/logos/LOGO.png" alt="logo.img">
+            </div>
+        </label>
+        <nav class="main-nav" id="header-nav">
+            <ul class="nav-list">
+                <li class="nav-item"><a class='nav-link' href='../../index.html'>Gracias</a> </li>
+                <li class="nav-item"><a class='nav-link' href='../../pages/about/about.html'>Acerca</a> </li>
+                <li class="nav-item"><a class='nav-link' href='../../pages/contact/contact.html'>Contacto</a> </li>
+                <li class="nav-item"><a class='nav-link' href='../../pages/register/register.html'>Registro</a> </li>
+
+            </ul>
+        </nav>
+
+
+        <div class="user-admin">
+            <!-- <ul class="nav-list">
+            <li class="nav-item"><a class="nav-link" href="/pages/admin/user-admin.html">User admin</a></li>
+            <li class="nav-item"><a class="nav-link" href="/pages//admin/product-admin.html">Poduct admin</a></li>
+        </ul> -->
+        </div>
+
+        <div class="user-menu" id="header-user">
+
+            <a class="cart-shopping" href="">
+                <img src="../../assets/images/user-menu/carrito4.png" alt="cart.img" style="width: 30px; height:30px">
+            </a>
+            <div class="user-action"></div>
+            <a class="user  user-name" href="/pages/login/login.html">
+                <img src="../../assets/images/user-menu/usuario2.png" alt="user.img" style="width: 35px; height: 35px ">
+            </a>
+        </div>
+
+    </header>
+
+
+    <!-- MAIN -->
+    <main>
+
+        <div class="input-container  input-wrapper">
+            <input type="text" class="input" id="search" placeholder="Buscar por nombre">
+        </div>
+
+
+        <div class="admin-container">
+            <section class="form-container">
+                <form id="user-form">
+                    <input type="hidden" name="id">
+
+                    <div class="input-wrapper">
+                        <label for="producto">Producto</label>
+                        <input type="text" name="producto" id="producto" minlength="5" maxlength="60" requiered
+                            autofocus />
+                    </div>
+                    <div class="input-wrapper">
+                        <label for="descripcion">Descripcion</label>
+                        <input type="text" name="descripcion" id="descripcion" required />
+                    </div>
+                    <div class="input-wrapper">
+                        <label for="precio">Precio</label>
+                        <input type="number" name="precio" id="precio" required />
+                    </div>
+
+
+                    <div class="input-wrapper">
+                        <label for="fecha">Fecha</label>
+                        <input type="date" name="fecha" id="fecha" min=" 1930-01-01" />
+                    </div>
+
+
+                    <div class="input-wrapper">
+                        <label for="image">Imagen</label>
+                        <input type="src" name="image" id="image" />
+
+                    </div>
+                    <!-- #checkbox -->
+                    <div class="active">
+                        <label for="active">Activo</label>
+                        <input type="checkbox" name="active" id="active" />
+                    </div>
+                    <button type="submit" class="btn-form">Agregar producto</button>
+
+                </form>
+
+            </section>
+            <section class="table-container">
+                <table class="user-table" id="userTable">
+                    <thead>
+                        <tr class="table-head">
+                            <th>Imagen</th>
+                            <th>Producto</th>
+                            <th>Descripcion</th>
+                            <th>Precio</th>
+                            <th>Fecha</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="table-body">
+
+                    </tbody>
+                </table>
+            </section>
+        </div>
+    </main>
+    <!-- FOOTER -->
+
+    <footer class="main-footer">
+
+        <section class="footer-section">
+            <div class="footer-logo">
+                <img class="footer-logo" src="../../assets/images/logos/LOGO.png" alt="">
+            </div>
+        </section>
+
+        <section class="footer-section">
+            <div class="footer-phone">
+                <h1> Contáctanos</h1>
+                <p class="phone-description">0341-3098402 <br>
+                    Lunea a Viernes <br>
+                    de 9:00 a 17:00 hs</p>
+            </div>
+        </section>
+
+        <section class="footer-section">
+            <div class="social-media">
+                <ul class="footer-list">
+                    <li><a class="link-footer" href=""><i class="fa-brands fa-square-facebook"></i> Facebook</a></li>
+                    <li><a class="link-footer" href=""><i class="fa-brands fa-instagram"></i> Instagram</a></li>
+                    <li><a class="link-footer" href=""><i class="fa-brands fa-whatsapp"></i> Whatsapp</a></li>
+
+                </ul>
+
+            </div>
+        </section>
+        <div class="line-feature"></div>
+
+
+
+    </footer>
+
+
+
+
+    <!-- SCRIPTS -->
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="../../js/header.js"></script>
+    <script src="../../js/initialData-products.js"></script>
+    <script src="../../js/fomatDate.js"></script>
+    <script src="../../js/products.js"></script>
+
+</body>
+
+</html>
