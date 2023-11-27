@@ -1,6 +1,6 @@
 const productsArray = JSON.parse(localStorage.getItem("product"));
 
-// Obtener el body de la tabla
+// -Obtener el body de la tabla
 const tableBody = document.getElementById("table-body");
 const searchInput = document.querySelector("#search");
 const productForm = document.querySelector("form#user-form");
@@ -13,16 +13,14 @@ productForm.addEventListener("submit", (evt) => {
   const el = evt.target.elements;
 
   // # Operador ternario
-  //          condicion       true        false
   const id = el.id.value ? el.id.value : new Date().getTime();
 
-  //-----objeto product----------------------
   const product = {
     producto: el.producto.value,
-    precio: el.precio.valueAsNumber, //Obtengo el valor numérico
+    precio: el.precio.valueAsNumber, 
     descripcion: el.descripcion.value,
     active: el.active.checked,
-    fecha: new Date(el.fecha.value +'T00:00:00-03:00').getTime(),
+    fecha: new Date(el.fecha.value + "T00:00:00-03:00").getTime(),
     id: id,
     image: el.image.value,
   };
@@ -33,26 +31,21 @@ productForm.addEventListener("submit", (evt) => {
 
   // Pregunto si tengo id para saber si estoy editando o no
   if (el.id.value) {
-
-// --------Editando producto------------------------
+    // -Editando
     const indice = productsArray.findIndex((producto) => {
       if (producto.id === el.id.value) {
         return true;
       }
     });
-  //reemplazo el producto con los datos nuevos del formulario
-    productsArray[indice] = product;
 
+    productsArray[indice] = product;
     Swal.fire({
       title: "Producto Editado",
       icon: "success",
       timer: 3000,
     });
-
-    //al modificar el array necesito refrescar la vista
   } else {
-
-//---------Agregando un producto nuevo--------------------
+    //-Agregando un producto nuevo
     productsArray.push(product);
     Swal.fire({
       title: "Producto Agregado",
@@ -61,29 +54,26 @@ productForm.addEventListener("submit", (evt) => {
     });
   }
   pintarProductos(productsArray);
-  // -Actualizo el localStorage
+
   actualizarLocalStorage();
 
   resetearFormulario();
 });
 
-//---------Resetear Formulario-------------------
+//-Resetear Formulario
 function resetearFormulario() {
-  productForm.reset(); //Reseteo el formulario
-  submitBtn.classList.remove("btn-edit"); //Remuevo la clase editar
-  submitBtn.innerText = "Agregar producto"; //Vuelvo el texto del botón a su valor por defecto
+  productForm.reset();
+  submitBtn.classList.remove("btn-edit");
+  submitBtn.innerText = "Agregar producto";
   productForm.elements.producto.focus();
 }
 
-//--------Filtro de productos (search)---------------------
-
+//-Filtro de productos (search)
 //Escuchar cuando el usuario presiona una tecla en el input search
 searchInput.addEventListener("keyup", (eventito) => {
-  // Obtener el valor del input y lo pasamos a minúsculas
   const inputValue = eventito.target.value.toLowerCase();
-  // Buscar en todos los productos aquellos donde su nombre tengan este texto
-  const productosFiltrados = productsArray.filter((prod) => {
 
+  const productosFiltrados = productsArray.filter((prod) => {
     const nombre = prod.producto.toLowerCase();
 
     if (nombre.includes(inputValue)) {
@@ -95,15 +85,13 @@ searchInput.addEventListener("keyup", (eventito) => {
   // Pintar solo los usuario que hayan coincidido.
   pintarProductos(productosFiltrados);
 });
-
+debugger;
 //Llamo por primera vez que se ejecuta mi script la función pintar usuarios
 pintarProductos(productsArray);
 
-//--------Pintar Poductos----------------------------
 function pintarProductos(arrayPintar) {
   // Iterar el array y agregar un tr por cada producto que tengamos.
 
-  // let tableBody = document.getElementById('userTable')
   tableBody.innerHTML = "";
 
   arrayPintar.forEach((product, indiceActual) => {
@@ -112,9 +100,11 @@ function pintarProductos(arrayPintar) {
             <td class="user-image">
                 <img src="${product.image}">
             </td>
-            <td class="user-producto">${product.producto}</td>
+            <td class="user-producto"> <strong> ${
+              product.producto
+            } </strong></td>
             <td class="user-descripcion">${product.descripcion}</td>
-            <td class="user-precio">${product.precio}</td>
+            <td class="user-precio">$ ${product.precio}</td>
         
             <td class="user-fecha">${formatDate(product.fecha)}</td>
 
@@ -138,12 +128,12 @@ function pintarProductos(arrayPintar) {
   });
 }
 
-
+//-LocalStorage
 function actualizarLocalStorage() {
   localStorage.setItem("product", JSON.stringify(productsArray));
 }
 
-//---------Borrar Productos----------------------------------------------------
+//-Borrar Productos
 function borrarProducto(ID, producto) {
   const confirmDelete = confirm(
     `Realmente desea borrar este producto ${producto}`
@@ -159,26 +149,24 @@ function borrarProducto(ID, producto) {
   }
 }
 
-// ------- Editar Producto -----------------------
+//-Editar Producto
+
 function editarProducto(idBuscar) {
-  // Buscar un producto con id y obtenerlo
   const productEdit = productsArray.find((producto) => {
-    //deberia devolver un true, según la condición id que me enviaron === al del producto que estoy iterando
     if (producto.id === idBuscar) {
       return true;
-     
     }
+    console.log(typeof producto.id); //number
+    console.log(typeof idBuscar); //string
   });
-console.log(productEdit)
-  //Indicar que el producto no fue encontrado
+
   if (!productEdit) {
     Swal.fire("Error al editar", "No se pudo editar el producto", "error");
-    return
+    return;
   }
-  // console.log(productEdit)
-  // Rellenar el formulario con los datos del producto a editar
 
   const el = productForm.elements;
+
   el.id.value = productEdit.id;
   el.precio.value = productEdit.precio;
   el.producto.value = productEdit.producto;
@@ -191,5 +179,4 @@ console.log(productEdit)
 
   submitBtn.classList.add("btn-edit");
   submitBtn.innerText = "Editar producto";
-  
 }

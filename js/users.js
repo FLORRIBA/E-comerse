@@ -1,6 +1,6 @@
 const usersArray = JSON.parse(localStorage.getItem("users"));
 
-// Obtener el body de la tabla
+//-Obtener el body de la tabla
 const tableBody = document.getElementById("table-body");
 const searchInput = document.querySelector("#search");
 const userForm = document.querySelector("form#user-form");
@@ -35,20 +35,18 @@ userForm.addEventListener("submit", (evt) => {
   }
 
   // # Operador ternario
-  //          condicion       true        false
   const id = el.id.value ? el.id.value : new Date().getTime();
 
   const user = {
     fullname: el.fullname.value,
-    age: el.age.valueAsNumber, //Obtengo el valor numérico
+    age: el.age.valueAsNumber,
     email: el.email.value,
     password: el.password.value,
     active: el.active.checked,
-    bornDate: new Date(el.bornDate.value +'T00:00:00-03:00').getTime(),
+    bornDate: new Date(el.bornDate.value + "T00:00:00-03:00").getTime(),
     location: el.location.value,
     id: id,
     image: el.image.value,
-    // role: "CLIENT_ROLE",
   };
 
   // Tenemos 2 posibles acciones a realizar
@@ -63,17 +61,14 @@ userForm.addEventListener("submit", (evt) => {
         return true;
       }
     });
-    //reemplazo el usuario con los datos nuevos del formulario
     usersArray[indice] = user;
     Swal.fire({
       title: "Usuario Editado",
       icon: "success",
       timer: 3000,
     });
-  
-    //al modificar el array necesito refrescar la vista
   } else {
-    //Agregando un usuario nuevo
+    //-Agregando un usuario nuevo
     usersArray.push(user);
     Swal.fire({
       title: "Usuario Agregado",
@@ -82,29 +77,27 @@ userForm.addEventListener("submit", (evt) => {
     });
   }
   pintarUsuarios(usersArray);
-  // -Actualizo el localStorage
+
   actualizarLocalStorage(usersArray);
 
   resetearFormulario();
 });
 
+//-Resetear Formulario
 function resetearFormulario() {
-  userForm.reset(); //Reseteo el formulario
-  userForm.elements.password.disabled = false; //Activo si estaban desactivados los input password
+  userForm.reset();
+  userForm.elements.password.disabled = false;
   userForm.elements.password2.disabled = false;
-  submitBtn.classList.remove("btn-edit"); //Remuevo la clase editar
-  submitBtn.innerText = "Agregar usuario"; //Vuelvo el texto del botón a su valor por defecto
+  submitBtn.classList.remove("btn-edit");
+  submitBtn.innerText = "Agregar usuario";
   userForm.elements.fullname.focus();
 }
 
-// Filtro de usuarios
+//-Filtro de usuarios (search)
 //Escuchar cuando el usuario presiona una tecla en el input search
 searchInput.addEventListener("keyup", (eventito) => {
-  // Obtener el valor del input y lo pasamos a minúsculas
   const inputValue = eventito.target.value.toLowerCase();
-  // Buscar en todos los usuarios aquellos donde su nombre tengan este texto
 
-  // const usuariosFiltrados = usersArray.filter((usuario) => usuario.fullname.toLowerCase().includes(inputValue))
   const usuariosFiltrados = usersArray.filter((usuario) => {
     const nombre = usuario.fullname.toLowerCase();
 
@@ -117,14 +110,13 @@ searchInput.addEventListener("keyup", (eventito) => {
   // Pintar solo los usuario que hayan coincido
   pintarUsuarios(usuariosFiltrados);
 });
-debugger
+debugger;
 //Llamo por primera vez que se ejecuta mi script la función pintar usuarios
 pintarUsuarios(usersArray);
 
 function pintarUsuarios(arrayPintar) {
   // Iterar el array y agregar un tr por cada user que tengamos.
 
-  // let tableBody = document.getElementById('userTable')
   tableBody.innerHTML = "";
 
   arrayPintar.forEach((user, indiceActual) => {
@@ -159,10 +151,12 @@ function pintarUsuarios(arrayPintar) {
   });
 }
 
+//-LocalStorage
 function actualizarLocalStorage() {
   localStorage.setItem("users", JSON.stringify(usersArray));
 }
 
+//-Borrar usuarios
 function borrarUsuario(ID, nombre) {
   const confirmDelete = confirm(
     `Realmente desea borrar este usuario ${nombre}`
@@ -178,27 +172,22 @@ function borrarUsuario(ID, nombre) {
   }
 }
 
+//-Editar Usuario
 function editarUsuario(idBuscar) {
-  // Buscar un usuario con id y obtenerlo
   const userEdit = usersArray.find((usuario) => {
-    //deberia devolver un true, según la condición id que me enviaron === al del usuario que estoy iterando
     if (usuario.id === idBuscar) {
       return true;
     }
   });
 
-  //Indicar que el usuario no fue encontrado
   if (!userEdit) {
     Swal.fire("Error al editar", "No se pudo editar el usuario", "error");
     return;
   }
 
-  // Rellenar el formulario con los datos del usuario a editar
-
   const el = userForm.elements;
 
   el.id.value = userEdit.id;
-
   el.age.value = userEdit.age;
   el.fullname.value = userEdit.fullname;
   el.email.value = userEdit.email;
@@ -215,5 +204,4 @@ function editarUsuario(idBuscar) {
 
   submitBtn.classList.add("btn-edit");
   submitBtn.innerText = "Editar usuario";
-  // Deshabilitar los input de contraseña
 }

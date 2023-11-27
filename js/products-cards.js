@@ -2,7 +2,7 @@ const productsArray = JSON.parse(localStorage.getItem("product"));
 const cardSection = document.querySelector(".card-section");
 
 function pintarProductos(arrayPintar) {
-  // Iterar el array y agregar un tr por cada producto que tengamos.
+
   cardSection.innerHTML = "";
 
   arrayPintar.forEach((product, indiceActual) => {

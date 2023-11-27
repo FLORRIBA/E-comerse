@@ -69,7 +69,7 @@
                     <div class="input-wrapper">
                         <label for="email">E-mail</label>
                         <input type="email" name="email" id="email" minlength="6" maxlength="140" required
-                            pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$" />
+                            pattern="[a-zA-Z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$" />
                     </div>
                     <div class="input-wrapper">
                         <label for="password">Contraseña</label>
@@ -96,13 +96,13 @@
                     </div>
                     <div class="input-wrapper">
                         <label for="age">Edad</label>
-                        <input type="number" name="age" id="age" />
+                        <input type="number" name="age" id="age" required/>
                     </div>
 
 
                     <div class="input-wrapper">
                         <label for="bornDate">Fecha Nacimiento</label>
-                        <input type="date" name="bornDate" id="bornDate" min=" 1930-01-01" />
+                        <input type="date" name="bornDate" id="bornDate" min=" 1930-01-01" required/>
                     </div>
 
 
@@ -111,7 +111,7 @@
                         <input type="search" name="image" id="image" />
 
                     </div>
-                    <!-- #checkbox -->
+                    
                     <div class="active">
                         <label for="active">Activo</label>
                         <input type="checkbox" name="active" id="active" />
@@ -178,13 +178,15 @@
     </footer>
 
     <!-- SCRIPTS -->
+  
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
     <script src="../../js/header.js"></script>
     <script src="../../js/initialData.js"></script>
     <script src="../../js/fomatDate.js"></script>
     <script src="../../js/users.js"></script>
 
-   
+
 </body>
 
 </html>

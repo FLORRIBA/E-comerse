@@ -33,7 +33,7 @@ userForm.addEventListener("submit", (evt) => {
   }
 
   // # Operador ternario
-  //          condicion       true        false
+
   const id = el.id.value ? el.id.value : new Date().getTime();
 
   const user = {
@@ -42,18 +42,16 @@ userForm.addEventListener("submit", (evt) => {
     email: el.email.value,
     password: el.password.value,
     active: el.active.checked,
-    bornDate: new Date(el.bornDate.value +'T00:00:00-03:00').getTime(),
+    bornDate: new Date(el.bornDate.value + "T00:00:00-03:00").getTime(),
     location: el.location.value,
     id: id,
     image: el.image.value,
-    // role: "CLIENT_ROLE",
   };
 
   // Tenemos 2 posibles acciones a realizar
   //  a- Al estar editando debería reemplazar el usuario a editar con sus información actualizada
   //  b- Agregue un usuario nuevo
 
-  // Pregunto si tengo id para saber si estoy editando o no
   if (el.id.value) {
     // -Editando
     const indice = usersArray.findIndex((usuario) => {
@@ -61,17 +59,15 @@ userForm.addEventListener("submit", (evt) => {
         return true;
       }
     });
-    //reemplazo el usuario con los datos nuevos del formulario
+
     usersArray[indice] = user;
     Swal.fire({
       title: "Usuario Editado",
       icon: "success",
       timer: 3000,
     });
-  
-    //al modificar el array necesito refrescar la vista
   } else {
-    //Agregando un usuario nuevo
+    //-Agregando un usuario nuevo
     usersArray.push(user);
     Swal.fire({
       title: "Usuario Agregado",
@@ -87,15 +83,14 @@ userForm.addEventListener("submit", (evt) => {
 });
 
 function resetearFormulario() {
-  userForm.reset(); //Reseteo el formulario
-  userForm.elements.password.disabled = false; //Activo si estaban desactivados los input password
+  userForm.reset();
+  userForm.elements.password.disabled = false;
   userForm.elements.password2.disabled = false;
-  submitBtn.classList.remove("btn-edit"); //Remuevo la clase editar
-  submitBtn.innerText = "Agregar usuario"; //Vuelvo el texto del botón a su valor por defecto
+  submitBtn.classList.remove("btn-edit");
+  submitBtn.innerText = "Agregar usuario";
   userForm.elements.fullname.focus();
 }
 
 function actualizarLocalStorage() {
-    localStorage.setItem("users", JSON.stringify(usersArray));
-  }
-  
+  localStorage.setItem("users", JSON.stringify(usersArray));
+}
