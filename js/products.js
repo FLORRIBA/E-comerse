@@ -17,7 +17,7 @@ productForm.addEventListener("submit", (evt) => {
 
   const product = {
     producto: el.producto.value,
-    precio: el.precio.valueAsNumber, 
+    precio: el.precio.valueAsNumber,
     descripcion: el.descripcion.value,
     active: el.active.checked,
     fecha: new Date(el.fecha.value + "T00:00:00-03:00").getTime(),
@@ -111,7 +111,7 @@ function pintarProductos(arrayPintar) {
             <td>      
               <button class="action-btn btn-danger" 
                       title="Borrar producto" 
-                      onclick="borrarProducto(  '${product.id}', '${
+                      onclick="borrarProducto(  ${product.id}, '${
       product.producto
     }'  )" >
                       <i class="fa-solid fa-trash-can"></i>
@@ -119,7 +119,7 @@ function pintarProductos(arrayPintar) {
 
               <button class="action-btn" 
                       title="Editar Producto"
-                      onclick="editarProducto( '${product.id}')">
+                      onclick="editarProducto( ${product.id})">
                       <i class="fa-solid fa-pen-to-square"></i>
               </button>
 
@@ -156,8 +156,8 @@ function editarProducto(idBuscar) {
     if (producto.id === idBuscar) {
       return true;
     }
-    console.log(typeof producto.id); //number
-    console.log(typeof idBuscar); //string
+    // console.log(typeof producto.id); //number
+    // console.log(typeof idBuscar); //string
   });
 
   if (!productEdit) {

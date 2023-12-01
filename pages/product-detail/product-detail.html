@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product-detail</title>
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+
+<body>
+
+    <header class="main-header">
+
+        <input class="input-check" type="checkbox" name="" id="check-menu">
+        <label class="label-menu" for="check-menu">
+            <div class="burger-line">
+                <img class="nav-logo" src="../../assets/images/logos/LOGO.png" alt="logo.img">
+            </div>
+        </label>
+        <nav class="main-nav" id="header-nav">
+            <ul class="nav-list">
+                <li class="nav-item"><a class='nav-link' href='../../index.html'>Gracias</a> </li>
+                <li class="nav-item"><a class='nav-link' href='../../pages/about/about.html'>Acerca</a> </li>
+                <li class="nav-item"><a class='nav-link' href='../../pages/contact/contact.html'>Contacto</a> </li>
+                <li class="nav-item"><a class='nav-link' href='../../pages/register/register.html'>Registro</a> </li>
+
+            </ul>
+        </nav>
+
+
+        <div class="user-admin"></div>
+
+        <div class="user-menu" id="header-user">
+
+            <a class="cart-shopping" href="">
+                <img src="../../assets/images/user-menu/carrito4.png" alt="cart.img" style="width: 30px; height:30px">
+            </a>
+            <div class="user-action"></div>
+            <a class="user  user-name" href="../../pages/login/login.html">
+                <img src="../../assets/images/user-menu/usuario2.png" alt="user.img" style="width: 35px; height: 35px ">
+            </a>
+        </div>
+
+    </header>
+
+    <section class="product-detail-container">
+
+        <div class="img-card">
+
+            <img src="../../assets/images/product-detail/imagen.png" alt="" id="main-img">
+
+            <div class="small-card">
+                <img src="../../assets/images/product-detail/imagen.png" alt="" class="small-img">
+                <img src="../../assets/images/product-detail/shampoo.png" alt="" class="small-img">
+                <img src="../../assets/images/product-detail/cepillo2.png" alt="" class="small-img">
+                <img src="../../assets/images/product-detail/pasta-dental.png" alt="" class="small-img">
+            </div>
+
+        </div>
+
+        <div class="product-info">
+            <h3> Box niños</h3>
+            <h5>Precio: $8000</h5>
+            <p><strong> Shampoo sólido y Jabón vegetal </strong> de avena y almendras con aceite puro de almendras y
+                una dosis de aceite esencial cítrico o lavanda. Apto para bebés. <br>
+                <strong>Pasta dental </strong> natural: Tiene todo lo necesario para la correcta limpieza bucal de un
+                niño, confirmado por odontólogos pediátricos que participaron en la fórmula.<br>
+                <strong>Cepillo de dientes </strong> de bambú ( Para peques de 5 a 12 años.): 97% biodegradable:
+                packaging de cartón y mango de bambú moso. <br> <br>
+
+                <strong>Productos que cuidan a los más chiquitos y el mundo donde vivimos, el hogar que tendrán para
+                    toda su vida.</strong>
+            </p>
+
+
+            <div class="quantity">
+                <input type="number" min="1" value="1">
+                <button class="quantity-btn">Comprar</button>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- FOOTER -->
+
+    <footer class="main-footer">
+
+        <section class="footer-section">
+            <div class="footer-logo">
+                <img class="footer-logo" src="../../assets/images/logos/LOGO.png" alt="">
+            </div>
+        </section>
+
+        <section class="footer-section">
+            <div class="footer-phone">
+                <h1> Contáctanos</h1>
+                <p class="phone-description">0341-3098402 <br>
+                    Lunea a Viernes <br>
+                    de 9:00 a 17:00 hs</p>
+            </div>
+        </section>
+
+        <section class="footer-section">
+            <div class="social-media">
+                <ul class="footer-list">
+                    <li><a class="link-footer" href=""><i class="fa-brands fa-square-facebook"></i> Facebook</a></li>
+                    <li><a class="link-footer" href=""><i class="fa-brands fa-instagram"></i> Instagram</a></li>
+                    <li><a class="link-footer" href=""><i class="fa-brands fa-whatsapp"></i> Whatsapp</a></li>
+
+                </ul>
+
+            </div>
+        </section>
+        <div class="line-feature"></div>
+
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../../js/product-detail.js"></script>
+    <script src="../../js/products-cards.js"></script>
+
+</body>
+
+</html>

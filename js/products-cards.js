@@ -2,7 +2,6 @@ const productsArray = JSON.parse(localStorage.getItem("product"));
 const cardSection = document.querySelector(".card-section");
 
 function pintarProductos(arrayPintar) {
-
   cardSection.innerHTML = "";
 
   arrayPintar.forEach((product, indiceActual) => {
@@ -27,7 +26,9 @@ function pintarProductos(arrayPintar) {
           </div>
   
           <footer class="card-footer">
-              <a class="card-button">Ver más</a>
+          <a class="card-button" id="ver-mas" onclick="verMas(${
+            product.id
+          })">Ver más</a>
               <button class="card-btn">Comprar</button>
           </footer>
   
@@ -38,3 +39,7 @@ function pintarProductos(arrayPintar) {
 }
 
 pintarProductos(productsArray);
+
+function verMas() {
+  window.location.href = "../../pages/product-detail/product-detail.html";
+}

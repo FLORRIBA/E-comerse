@@ -134,7 +134,7 @@ function pintarUsuarios(arrayPintar) {
             <td>      
               <button class="action-btn btn-danger" 
                       title="Borrar usuario" 
-                      onclick="borrarUsuario(  '${user.id}', '${
+                      onclick="borrarUsuario(  ${user.id}, '${
       user.fullname
     }'  )" >
                       <i class="fa-solid fa-trash-can"></i>
@@ -142,7 +142,7 @@ function pintarUsuarios(arrayPintar) {
 
               <button class="action-btn" 
                       title="Editar usuario"
-                      onclick="editarUsuario( '${user.id}')">
+                      onclick="editarUsuario( ${user.id})">
                       <i class="fa-solid fa-pen-to-square"></i>
               </button>
 
